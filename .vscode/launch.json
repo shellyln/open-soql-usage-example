@@ -1,0 +1,17 @@
+{
+    "configurations": [
+        {
+            "name": "Launch Program",
+            "program": "${workspaceFolder}/index.js",
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "runtimeArgs": [
+                "--harmony-top-level-await",
+                "--es-module-specifier-resolution=node"
+            ],
+            "type": "node"
+        }
+    ]
+}

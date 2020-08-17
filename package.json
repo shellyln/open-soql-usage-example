@@ -1,0 +1,17 @@
+{
+  "name": "open-soql-usage-example",
+  "version": "0.0.0",
+  "private": "true",
+  "description": "Usage example of Open SOQL.",
+  "main": "index.js",
+  "type": "module",
+  "dependencies": {
+    "open-soql": "^0.1.1"
+  },
+  "scripts": {
+    "start": "node --harmony-top-level-await --es-module-specifier-resolution=node index.js",
+    "test": "echo \"No test specified\""
+  },
+  "author": "shellyln",
+  "license": "ISC"
+}
