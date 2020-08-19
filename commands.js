@@ -5,7 +5,15 @@ import { staticCsvResolverBuilder } from 'open-soql/modules/resolvers';
 
 
 export const { soql, insert, update, remove, transaction } = build({
-    relationships: {                                    // Define the relationships.
+    rules: { // This is an optional.
+        idFieldName: (resolverName) => {
+            return 'Id';
+        },
+        foreignIdFieldName: (masterResolverName) => {
+            return masterResolverName ? `${masterResolverName}Id` : void 0;
+        },
+    },
+    relationships: {                                    // Define the relationships. // This is an optional.
         Account: {                                      // Resolver name
             Contacts: ['Contact'],                      // Relationship item name → Resolver name
             Opportunities: ['Opportunity', 'Account'],  // The case of explicitly specifying a detail's relationship item name.
@@ -65,27 +73,27 @@ export const { soql, insert, update, remove, transaction } = build({
                 `)
             ),
         },
-        insert: {
+        insert: { // This is an optional.
             Contact: (records, ctx) => {
                 return Promise.resolve(records.map((x, index) => {
                     return { ...x, Id: `Contact/z${index + 1}`, Count: 0 };
                 }));
             }
         },
-        update: {
+        update: { // This is an optional.
             Contact: (records, ctx) => {
                 return Promise.resolve(records.map((x, index) => {
                     return { ...x, Count: (x.Count ?? 0) + 1 };
                 }));
             }
         },
-        remove: {
+        remove: { // This is an optional.
             Contact: (records, ctx) => {
                 return Promise.resolve();
             }
         },
     },
-    events: {
+    events: { // This is an optional.
         beginTransaction: (evt) => {
             return Promise.resolve();
         },
