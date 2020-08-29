@@ -1,5 +1,8 @@
 
-import { compile, soql, insert, update, remove, touch, transaction, subscribe, unsubscribe } from './commands';
+import { compile, soql,
+         insert, update, remove, touch, notifyRemoved,
+         transaction,
+         subscribe, unsubscribe, unsubscribeAllBySubscriber } from './commands';
 
 
 
@@ -59,7 +62,7 @@ try {
 
     subscribe('Contact', null, subscriber);
     await transaction(async (commands, tr) => {
-        const { compile, soql, insert, update, remove, touch } = commands;
+        const { compile, soql, insert, update, remove, touch, notifyRemoved } = commands;
 
         const query = compile`
             select

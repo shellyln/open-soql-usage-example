@@ -4,7 +4,9 @@ import { staticCsvResolverBuilder } from 'open-soql/modules/resolvers';
 
 
 
-export const { compile, soql, insert, update, remove, touch, transaction, subscribe, unsubscribe } = build({
+export const { compile, soql, insert, update, remove, touch, notifyRemoved,
+        transaction, subscribe, unsubscribe, unsubscribeAllBySubscriber } = build({
+
     rules: { // This is an optional.
         idFieldName: (resolverName) => {
             return 'Id';
