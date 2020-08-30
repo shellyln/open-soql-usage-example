@@ -6,7 +6,7 @@
   "main": "index.js",
   "type": "module",
   "dependencies": {
-    "open-soql": "^0.3.1"
+    "open-soql": "^0.4.0"
   },
   "scripts": {
     "start": "node --harmony-top-level-await --es-module-specifier-resolution=node index.js",
